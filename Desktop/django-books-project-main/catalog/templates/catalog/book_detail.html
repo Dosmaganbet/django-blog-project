@@ -1,0 +1,32 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    
+    <a href="{% url 'index' %}" style="text-decoration: none; color: #3498db; font-weight: bold;">← Назад к списку</a>
+
+    <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 20px;">
+        <h1 style="color: #2c3e50; font-size: 2.5em; margin-bottom: 10px;">{{ book.title }}</h1>
+        <p style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 25px;">Автор: <span style="color: #34495e; font-weight: 600;">{{ book.author.name }}</span></p>
+        
+        <div style="height: 2px; background: #f0f0f0; margin-bottom: 30px;"></div>
+
+        <h3 style="color: #2c3e50;">О чем эта книга:</h3>
+        <p style="line-height: 1.8; color: #444; font-size: 1.1em; background: #f9f9f9; padding: 20px; border-left: 5px solid #3498db; border-radius: 5px;">
+            {{ book.description|default:"К сожалению, описание для этой книги еще не добавлено." }}
+        </p>
+
+        {% if book.external_url %}
+        <div style="margin-top: 30px; padding: 25px; background: #f0fff4; border: 1px solid #c6f6d5; border-radius: 10px; text-align: center;">
+            <p style="margin-bottom: 15px; font-weight: bold; color: #2d3748;">Полный текст доступен онлайн:</p>
+            <a href="{{ book.external_url }}" target="_blank" style="background: #38a169; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                📖 Читать книгу онлайн
+            </a>
+        </div>
+        {% endif %}
+        <div style="margin-top: 40px; color: #bdc3c7; font-size: 0.9em; text-align: right;">
+            Дата публикации в системе: {{ book.published_date|date:"d.m.Y H:i" }}
+        </div>
+    </div>
+</div>
+{% endblock %}
