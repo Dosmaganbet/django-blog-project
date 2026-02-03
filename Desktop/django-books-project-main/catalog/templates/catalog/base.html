@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Моя Библиотека</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center; color: #2c3e50; margin-top: 30px;">Библиотека Новичка</h1>
+
+    <nav style="text-align: center; margin-bottom: 20px; padding: 10px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <a href="{% url 'index' %}" style="margin: 0 15px; text-decoration: none; color: #3498db; font-weight: bold; font-family: Arial;">🏠 Главная</a>
+        <a href="{% url 'about' %}" style="margin: 0 15px; text-decoration: none; color: #3498db; font-weight: bold; font-family: Arial;">ℹ️ О проекте</a>
+        <a href="/api/books/" style="margin: 0 15px; text-decoration: none; color: #e67e22; font-weight: bold; font-family: Arial;">🔗 API (JSON)</a>
+    </nav>
+
+    <hr style="border: 0; height: 1px; background: #eee; margin-bottom: 30px;">
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #aaa; font-family: Arial; font-size: 0.8em;">
+        &copy; 2026 Проект "Библиотека" | Задание №8
+    </footer>
+</body>
+</html>

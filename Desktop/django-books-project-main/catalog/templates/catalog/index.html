@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div style="padding: 20px; font-family: Arial;">
+    <h1>📚 Наша Библиотека</h1>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+        {% for book in books %}
+        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: white; box-shadow: 2px 2px 5px #eee;">
+            <h3><a href="{% url 'book_detail' book.id %}" style="text-decoration: none; color: #2c3e50;">{{ book.title }}</a></h3>
+            <p style="color: #7f8c8d; font-size: 0.9em;"><b>Автор:</b> {{ book.author.name }}</p>
+            <p style="font-size: 0.95em;">{{ book.description|default:"Описание скоро появится..." }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

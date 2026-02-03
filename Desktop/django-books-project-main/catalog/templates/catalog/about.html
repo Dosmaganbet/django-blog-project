@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 50px auto; text-align: center;">
+    <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <h1 style="color: #2c3e50;">О проекте "Библиотека"</h1>
+        <p style="font-size: 1.2em; color: #7f8c8d; margin-top: 20px;">
+            Это веб-приложение создано в рамках выполнения <strong>Assignment 8</strong>.
+        </p>
+        <div style="margin: 30px 0; text-align: left; display: inline-block;">
+            <ul style="list-style: none; padding: 0; font-size: 1.1em; line-height: 2;">
+                <li>✅ <strong>4 HTML шаблона:</strong> Base, Index, Detail, About.</li>
+                <li>✅ <strong>Стилизация:</strong> Отдельный CSS файл.</li>
+                <li>✅ <strong>API:</strong> Поддержка GET, POST, PUT, DELETE.</li>
+                <li>✅ <strong>База данных:</strong> Динамический вывод книг.</li>
+            </ul>
+        </div>
+        <br>
+        <a href="{% url 'index' %}" style="background: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px;">
+            Вернуться на главную
+        </a>
+    </div>
+</div>
+{% endblock %}
