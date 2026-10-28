@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<article>
+  <h2>{{ post.title }}</h2>
+  <p class="meta">{{ post.publish|date:"d M Y" }} · {{ post.author }} · {{ post.category }}{% if post.tags %} · {{ post.tags }}{% endif %}</p>
+  {{ post.body|linebreaks }}
+</article>
+<h3>Comments ({{ comments.count }})</h3>
+{% for c in comments %}
+  <div class="comment"><b>{{ c.name }}</b> <span class="meta">{{ c.created|date:"d M Y H:i" }}</span>{{ c.body|linebreaks }}</div>
+{% empty %}<p>No comments yet.</p>{% endfor %}
+<h3>Add a comment</h3>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Send</button></form>
+<p><a href="{% url 'post_list' %}">← Back</a></p>
+{% endblock %}

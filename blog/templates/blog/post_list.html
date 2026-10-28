@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% if category %}<p>Category: <b>{{ category }}</b> · <a href="{% url 'post_list' %}">all posts</a></p>{% endif %}
+{% if tag %}<p>Tag: <b>{{ tag }}</b> · <a href="{% url 'post_list' %}">all posts</a></p>{% endif %}
+{% for post in posts %}
+  <article>
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p class="meta">{{ post.publish|date:"d M Y" }} · {{ post.author }} · <a href="?category={{ post.category|urlencode }}">{{ post.category }}</a></p>
+    <p>{{ post.body|truncatewords:40 }}</p>
+  </article>
+{% empty %}
+  <p>No posts yet.</p>
+{% endfor %}
+{% endblock %}
